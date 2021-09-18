@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import static com.example.demo.security.ApplicationUserRole.*;
+
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -28,8 +30,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home")
-                .permitAll()
+                .antMatchers("/", "/home") .permitAll()
+                .antMatchers("/students/**").hasRole(STUDENT.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -44,8 +46,15 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails markHunt = User.builder()
                 .username("markHunt")
                 .password(encodedPass)
-                .roles("STUDENT") // ROLE_STUDENT(Internal name - Given by Spring)
+                .roles(STUDENT.name()) // ROLE_STUDENT(Internal name - Given by Spring)
                 .build();
-        return new InMemoryUserDetailsManager(markHunt);
+        encodedPass=passwordEncoder.encode("password123");
+        UserDetails stevenStreak = User.builder()
+                .username("stevenStreak")
+                .password(encodedPass)
+                .roles(ADMIN.name())
+                .build();
+
+        return new InMemoryUserDetailsManager(markHunt, stevenStreak);
     }
 }
