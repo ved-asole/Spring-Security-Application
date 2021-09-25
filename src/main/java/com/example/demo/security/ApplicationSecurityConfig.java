@@ -3,7 +3,7 @@ package com.example.demo.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -12,11 +12,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
 import static com.example.demo.security.ApplicationUserRole.*;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
@@ -34,11 +34,11 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/home") .permitAll()
                 .antMatchers("/students/**").hasRole(STUDENT.name())
-                .antMatchers("/management/**").hasAnyRole(STUDENT.name(), TRAINEE.name())
-                .antMatchers(HttpMethod.GET,"/management/**").hasAnyAuthority(ADMIN.name(), TRAINEE.name())
-                .antMatchers(HttpMethod.POST,"/management/**").hasAuthority(ADMIN.name())
-                .antMatchers(HttpMethod.PUT,"/management/**").hasAuthority(ADMIN.name())
-                .antMatchers(HttpMethod.DELETE,"/management/**").hasAuthority(ADMIN.name())
+//                .antMatchers("/management/**").hasAnyRole(ADMIN.name(), TRAINEE.name())
+//                .antMatchers(HttpMethod.GET,"/management/**").hasAnyAuthority(ADMIN.name(), TRAINEE.name())
+//                .antMatchers(HttpMethod.POST,"/management/**").hasAuthority(ADMIN.name())
+//                .antMatchers(HttpMethod.PUT,"/management/**").hasAuthority(ADMIN.name())
+//                .antMatchers(HttpMethod.DELETE,"/management/**").hasAuthority(ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -49,6 +49,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {
+
         String encodedPass=passwordEncoder.encode("password");
         UserDetails markHunt = User.builder()
                 .username("markHunt")
@@ -56,6 +57,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.roles(STUDENT.name()) // ROLE_STUDENT(Internal name - Given by Spring)
                 .authorities(STUDENT.getGrantedAuthorities())
                 .build();
+
         encodedPass=passwordEncoder.encode("password123");
         UserDetails stevenStreak = User.builder()
                 .username("stevenStreak")
@@ -63,6 +65,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.roles(ADMIN.name()) // ROLE_ADMIN
                 .authorities(ADMIN.getGrantedAuthorities())
                 .build();
+
         encodedPass=passwordEncoder.encode("mypassword");
         UserDetails erakesh = User.builder()
                 .username("erakesh")
@@ -73,4 +76,5 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         return new InMemoryUserDetailsManager(markHunt, stevenStreak, erakesh);
     }
+
 }
