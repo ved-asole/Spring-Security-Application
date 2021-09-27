@@ -1,0 +1,29 @@
+[33mcommit c98e7c044584e4dc9b86c31903fee58dac12695f[m[33m ([m[1;36mHEAD -> [m[1;32mPermission-Based-Authentication[m[33m, [m[1;31morigin/Permission-Based-Authentication[m[33m)[m
+Author: Ved Asole <vedasole001@gmail.com>
+Date:   Sat Sep 25 21:36:58 2021 +0530
+
+    annotation-based-authentication
+
+[33mcommit ed25cc32740ec9e40036a8296f67ad115961b847[m
+Author: Ved Asole <vedasole001@gmail.com>
+Date:   Mon Sep 20 10:26:06 2021 +0530
+
+    Method-Based-Authorization
+
+[33mcommit 89c11683254f7864447c12a31c784c4d065a5f47[m[33m ([m[1;31morigin/Role-Based-Authentication[m[33m, [m[1;32mRole-Based-Authentication[m[33m)[m
+Author: Ved Asole <vedasole001@gmail.com>
+Date:   Sun Sep 19 01:03:33 2021 +0530
+
+    final
+
+[33mcommit ca6c2428f77b1a1c12b3830117abeaa8b15b061e[m[33m ([m[1;31morigin/InMemory_User_Autentication[m[33m, [m[1;32mInMemory_User_Autentication[m[33m)[m
+Author: Ved Asole <vedasole001@gmail.com>
+Date:   Sat Sep 18 10:10:05 2021 +0530
+
+    User Authentication with one role
+
+[33mcommit bf646c2b1b44bc943997d0accdee73090d63c2d3[m[33m ([m[1;31morigin/Basic-Spring-Security[m[33m, [m[1;32mBasic-Spring-Security[m[33m)[m
+Author: Ved Asole <vedasole001@gmail.com>
+Date:   Thu Sep 16 19:03:59 2021 +0530
+
+    Final
