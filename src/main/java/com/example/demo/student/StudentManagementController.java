@@ -1,8 +1,8 @@
 package com.example.demo.student;
 
 import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,21 +24,21 @@ public class StudentManagementController {
     }
 
     @PutMapping("register")
-    @PostAuthorize("hasAuthority('student:create')")
+    @PreAuthorize("hasAuthority('student:create')")
     public void registerNewStudent(@RequestBody Student student){
         System.out.println("Registering the student");
         System.out.println(student);
     }
 
     @DeleteMapping("delete/{id}")
-    @PostAuthorize("hasAuthority('student:create')")
+    @PreAuthorize("hasAuthority('student:create')")
     public void deleteStudent(@PathVariable("id") int studentId){
         System.out.println("Deleting the student");
         System.out.println(studentId);
     }
 
     @PutMapping("update/{id}")
-    @PostAuthorize("hasAuthority('student:create')")
+    @PreAuthorize("hasAuthority('student:create')")
     public void updateStudent( @PathVariable("id") int studentId, @RequestBody Student student){
         System.out.println("Updating the student");
         System.out.println("ID : " + studentId);
