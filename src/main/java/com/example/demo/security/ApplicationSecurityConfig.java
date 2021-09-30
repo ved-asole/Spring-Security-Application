@@ -34,15 +34,13 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/home") .permitAll()
                 .antMatchers("/students/**").hasRole(STUDENT.name())
-//                .antMatchers("/management/**").hasAnyRole(ADMIN.name(), TRAINEE.name())
-//                .antMatchers(HttpMethod.GET,"/management/**").hasAnyAuthority(ADMIN.name(), TRAINEE.name())
-//                .antMatchers(HttpMethod.POST,"/management/**").hasAuthority(ADMIN.name())
-//                .antMatchers(HttpMethod.PUT,"/management/**").hasAuthority(ADMIN.name())
-//                .antMatchers(HttpMethod.DELETE,"/management/**").hasAuthority(ADMIN.name())
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
+                .formLogin()
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/courses", true)
+                .failureForwardUrl("/");
     }
 
     // Setting up the InMemory user details
