@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Courses</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
+<div class="container">
+    <form class="form-logout" method="get" action="/logout">
     <h1>You have logged in and currently seeing the courses</h1>
     <h3>
         <ol>
@@ -13,6 +17,12 @@
             </li>
         </ol>
     </h3>
-
+        <br>
+    <p>
+        <label for="logout" class="sr-only">Logout</label>
+        <input type="submit" id="logout" name="logout" class="form-control btn btn-primary m-5" placeholder="Logout" value="Logout">
+    </p>
+    </form>
+</div>
 </body>
 </html>
