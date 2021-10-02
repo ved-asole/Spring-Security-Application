@@ -47,11 +47,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login").permitAll()
                     .defaultSuccessUrl("/courses", true)
                     .failureForwardUrl("/")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
                 .and()
                     // For RememberMe Functionality
                     .rememberMe()
                     .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(21))
                     .key("verySecureKey")
+                    .rememberMeParameter("remember-me")
                 .and()
                     // For logout feature
                     .logout()
