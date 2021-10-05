@@ -1,4 +1,25 @@
-<h1>Hello World!</h1>
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Home</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Hello World!</h1><br>
+            <h1>This is a normal Spring Security Project</h1><br>
 
-<br>
-<h1>This is a normal Spring Security Project</h1>
+            <form action="/login" method="get" class="form-signin">
+                <p>
+                    <label for="login" class="sr-only">Login</label>
+                    <input type="submit" id="login" name="login" class="form-control btn btn-primary m-5" value="Login">
+                </p>
+            </form>
+        </div>
+    </body>
+</html>
