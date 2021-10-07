@@ -31,7 +31,6 @@ public class ApplicationUser implements UserDetails {
         this.isEnabled = isEnabled;
     }
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return grantedAuthorities;

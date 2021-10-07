@@ -59,7 +59,6 @@ public class ApplicationUserDaoService implements ApplicationUserDao {
                         true,
                         true
                 )
-
         );
         return applicationUsers;
     }
